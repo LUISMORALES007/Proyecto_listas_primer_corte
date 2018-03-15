@@ -1,4 +1,7 @@
+@extends('master')
 
+
+@section('contenido')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,9 @@
 
 <style>
 
+
+     
+     
  
 
 
@@ -17,8 +23,7 @@
 
   #cover{
 
-      
-      background-size: cover;
+      background:  url(img/technology-3190200_1920.jpg) center center no-repeat;      background-size: cover;
       color: black;
       background-color: background-color:rgb(255,0,0);opacity:0.78 ;
       position: relative;
@@ -70,11 +75,27 @@
 
   #in{
 
-      width: 35%;
+      width: 38%;
       border-right: 20%;
+      margin-left: 3%;
+  }            
 
+  #en{
+    width: 28%;
+    margin-left: 3%;
+     
+  }         
 
-  }                                  
+  #un{
+
+    width: 26%;
+    margin-left: 1%;
+  }     
+  #an{
+     width: 25%;
+     margin-left: 15%;
+
+  }        
 </style>
 
    <meta charset="utf-8">
@@ -96,45 +117,12 @@
 
 </head>
 <header>
-  <div class="w3-container w3-black">
-  <h1 align="center">Sistema de gestion de turnos BANCO</h1>
-</div>
+ 
 
 </header>
 <br>
 
 <body>
-
-<!--barra de navegacion-->
-
-<div class="w3-container">
-
-
-<button onclick="myFunction('Demo1')" class="w3-button w3-block w3-aqua w3-left-align">Opciones</button>
-<div id="Demo1" class="w3-hide w3-animate-zoom">
-  <a href="#" class="w3-button w3-block w3-left-align">Home</a>
-  <a href="#" class="w3-button w3-block w3-left-align">Opcion 1</a>
-  <a href="#" class="w3-button w3-block w3-left-align">Opcion 2</a>
-  </div>
-</div>
-
-<script>
-function myFunction(id) {
-    var x = document.getElementById(id);
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else { 
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
-</script>
-
-
-<!--barra de navegacion-->
-
-
-
-
 
 
 <div id="cover">   
@@ -146,7 +134,7 @@ function myFunction(id) {
 
  <div id="izquierda">  
 
-  <form class="w3-container" action="{{ url('Registro')}}" method="POST" >
+  <form class="w3-container" action="{{ url('registro')}}" method="POST" >
         
         {{ csrf_field() }}
        
@@ -156,13 +144,13 @@ function myFunction(id) {
                         <strong>Apellido:</strong>
                         <input id="in" type="text" name="apellido"><br><br>
                          <strong>Tipo de documento: </strong>
-                        <input type="text" name="edad"><br><br>
+                        <input id="en" type="text" name="tipo"><br><br>
                          <strong>Numero de documento: </strong>
-                        <input type="text" name="doc"><br><br>
+                        <input id="un" type="text" name="doc"><br><br>
                         <strong>Ciudad: </strong>
-                        <input id="in" type="text" name="city"><br><br>
+                        <input id="an" type="text" name="city"><br><br>
                         <strong>Edad:</strong> 
-                        <input id="in" type="text" name="edad"><br><br>  
+                        <input id="an" type="text" name="edad"><br><br>  
  
 
           <div class="esqinfder"></div> 
@@ -181,9 +169,9 @@ function myFunction(id) {
              
   <strong>Tipo de turno: </strong> <select  class="custom-select">
   <option selected>Seleccione uno</option>
-  <option value="1">Consignacion</option>
-  <option value="2">Retiro</option>
-  <option value="3">Consulta administrativa</option>
+  <option value="consignacion">Consignacion</option>
+  <option value="retiro">Retiro</option>
+  <option value="consulta">Consulta administrativa</option>
 
   </select>
 
@@ -193,11 +181,11 @@ function myFunction(id) {
     
    <strong>Prioridad:</strong>  <select  class="custom-select">
   <option selected>Seleccione uno</option>
-  <option value="1">Mujer embarazada</option>
-  <option value="2">Persona tercera edad</option>
-  <option value="3">Persona con discapacidad</option>
-  <option value="4">Mujer</option>
-  <option value="3">Hombre</option>
+  <option value="embarazada">Mujer embarazada</option>
+  <option value="terceraEdad">Persona tercera edad</option>
+  <option value="discapacidad">Persona con discapacidad</option>
+  <option value="mujer">Mujer</option>
+  <option value="hombre">Hombre</option>
 
 
   <br>
@@ -205,9 +193,13 @@ function myFunction(id) {
 
 
 </select>
+<br>
+<br>
+<br>
+
             
-           <h1 align="left"> <button  type="submit" class="btn btn-primary btn-sm">Comprar</button></h1>
-           <!--  <br><button type="submit"> Buscar </button> --> 
+         <!--  <h1 align="left"> <button  type="submit" class="btn btn-primary btn-sm"></button></h1>-->
+            <br><button type="submit"> Registrarse.. </button> 
 
        <div class="esqinfder"></div>     
    
@@ -215,10 +207,37 @@ function myFunction(id) {
          
       </form>
 
+          
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
 
+          @if(Session::has('matriz'))
+            @foreach (Session::get('matriz') as $array)
+                @foreach ($array as $word => $meaning)
+                  <dt>{{ $word }}</dt>
+                  <dd>{{ $meaning }}</dd>
+                @endforeach
+                <br><br>
+            @endforeach
+        @endif
 
 
    
 
 </body>
 </html>
+
+@stop

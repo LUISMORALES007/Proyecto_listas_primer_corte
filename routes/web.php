@@ -11,9 +11,22 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('master');
 });
 
 
-Route::post('formulario' , 'Turnos@Matriz');
+
+Route::get('/', function () {
+    return view('reporte');
+});
+
+Route::get('/', function () {
+    return view('registro');
+});
+
+
+
+
+Route::post('registro' , 'Turnos@Matriz');
