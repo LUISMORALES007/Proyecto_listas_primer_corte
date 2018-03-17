@@ -23,21 +23,7 @@ class Turnos extends Controller{
             //dd(Session::has('matriz'));
 		if(Session::has('matriz')){
 
-             /* spldoubly
-                     
-               $listaAux = new SplDoublyLinkedList();
-               $auxMatriz = Session::get('matriz');
-               
-                   for($i=0;$i<sizeof($auxMatriz);$i++){
 
-                        $listaAux->push($auxMatriz[$i]);
-                        $listaAux->next();
-
-                   }
-
-                */
-			
-			
 			$dato = Session::get('matriz');
 			$dato[] = array( 
 				
@@ -54,10 +40,23 @@ class Turnos extends Controller{
 
 			echo "Se ha agregado un nuevo usuario a la lista de espera...";
 
-			Session::forget('matriz');
-
 			
 
+
+               $listaAux = new SplDoublyLinkedList();
+               $auxMatriz = Session::get('matriz');
+               
+                   for($i=0;$i<sizeof($auxMatriz);$i++){
+
+                        $listaAux->push($auxMatriz[$i]);
+                        $listaAux->next();
+                        
+                   }
+
+           var_dump($listaAux);
+
+			
+     
        
           
 			
@@ -81,8 +80,9 @@ class Turnos extends Controller{
 
 		}
 
-          
 
+          
+  // Session::forget('matriz');
 
 		
   		//dd($request->session()->get('matriz'));
