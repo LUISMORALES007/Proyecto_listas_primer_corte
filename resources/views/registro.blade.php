@@ -140,17 +140,17 @@
        
     
                         <strong>Nombre:</strong> 
-                        <input id="in" align="justify" type="text" name="nombre"><br><br>
+                        <input id="in" align="justify" type="text" name="Nombre"><br><br>
                         <strong>Apellido:</strong>
-                        <input id="in" type="text" name="apellido"><br><br>
+                        <input id="in" type="text" name="Apellido"><br><br>
                          <strong>Tipo de documento: </strong>
-                        <input id="en" type="text" name="tipo"><br><br>
+                        <input id="en" type="text" name="TipoDocumento"><br><br>
                          <strong>Numero de documento: </strong>
-                        <input id="un" type="text" name="doc"><br><br>
+                        <input id="un" type="text" name="NumeroDocumento"><br><br>
                         <strong>Ciudad: </strong>
-                        <input id="an" type="text" name="city"><br><br>
+                        <input id="an" type="text" name="Ciudad"><br><br>
                         <strong>Edad:</strong> 
-                        <input id="an" type="text" name="edad"><br><br>  
+                        <input id="an" type="text" name="Edad"><br><br>  
  
 
           <div class="esqinfder"></div> 
@@ -167,11 +167,11 @@
 
                      
              
-  <strong>Tipo de turno: </strong> <select  class="custom-select">
-  <option selected>Seleccione uno</option>
-  <option value="consignacion">Consignacion</option>
-  <option value="retiro">Retiro</option>
-  <option value="consulta">Consulta administrativa</option>
+  <strong>Tipo de turno: </strong> <select  class="custom-select" name="TipoTurno" >
+  <option selected >Seleccione uno</option>
+  <option >Consignacion</option>
+  <option >Retiro</option>
+  <option >Consulta administrativa</option>
 
   </select>
 
@@ -179,13 +179,13 @@
   <br>
 
     
-   <strong>Prioridad:</strong>  <select  class="custom-select">
-  <option selected>Seleccione uno</option>
-  <option value="embarazada">Mujer embarazada</option>
-  <option value="terceraEdad">Persona tercera edad</option>
-  <option value="discapacidad">Persona con discapacidad</option>
-  <option value="mujer">Mujer</option>
-  <option value="hombre">Hombre</option>
+   <strong>Prioridad:</strong>  <select  class="custom-select" name="Prioridad" >
+  <option selected >Seleccione uno</option>
+  <option >Mujer embarazada</option>
+  <option >Persona tercera edad</option>
+  <option >Persona con discapacidad</option>
+  <option >Mujer</option>
+  <option >Hombre</option>
 
 
   <br>
@@ -223,19 +223,47 @@
        <br>
        <br>
        <br>
+       <br>
+       <br>
+       <br>
+       <br>
+      
+
+   
+ 
+    <h2>Lista usuarios registrados</h2>
+
+ 
+
+    
+
+
+
+
+
+
+
+          <!--impresion de los datos del array-->
 
           @if(Session::has('matriz'))
             @foreach (Session::get('matriz') as $array)
                 @foreach ($array as $word => $meaning)
-                  <dt>{{ $word }}</dt>
-                  <dd>{{ $meaning }}</dd>
+                 <tr>
+                
+                 <strong><th>{{ $word }}</th></strong> 
+                  <th>{{ $meaning }}</th>
+            
+                 </tr> 
                 @endforeach
                 <br><br>
             @endforeach
         @endif
 
+      
+    
 
-   
+
+ 
 
 </body>
 </html>
