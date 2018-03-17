@@ -62,9 +62,9 @@ $listaAux = new SplDoublyLinkedList();
 			for ($j=0; $j <(sizeof($listaAux)-1) ; $j++) { 
 				if ($aux[$j]['Prioridad']>$aux[$j+1]['Prioridad']) {
 					
-					$aux2=$aux[$j]['Prioridad'];
-					$aux[$j]['Prioridad']=$aux[$j+1]['Prioridad'];
-					$aux[$j+1]['Prioridad']=$aux2;
+					$aux2=$aux[$j];
+					$aux[$j]=$aux[$j+1];
+					$aux[$j+1]=$aux2;
 				}
 			}
 		}
