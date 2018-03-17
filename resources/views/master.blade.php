@@ -42,7 +42,7 @@
 <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-aqua w3-left-align">Opciones</button>
 <div id="Demo1" class="w3-hide w3-animate-zoom">
   <a href= " http://127.0.0.1/Proyecto_Listas/public" class="w3-button w3-block w3-left-align">Principal</a>
-  <a href="reporte" class="w3-button w3-block w3-left-align">Reporte</a>
+  <a href="reporte2" class="w3-button w3-block w3-left-align">Reporte</a>
   
   </div>
 </div>
@@ -57,7 +57,10 @@ function myFunction(id) {
     }
 }
 </script>
+
+
 @yield('contenido')
+@yield('contenido2')
 
 
 

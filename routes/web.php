@@ -22,11 +22,15 @@ Route::get('/', function () {
     return view('reporte');
 });
 
+
 Route::get('/', function () {
     return view('registro');
 });
 
-
+Route::get('/reporte2', function () {
+    return view('reporte2');
+});
 
 
 Route::post('registro' , 'Turnos@Matriz');
+Route::post('registro2' , 'Turnos@Cajero1');

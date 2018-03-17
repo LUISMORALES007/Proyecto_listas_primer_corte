@@ -57,18 +57,35 @@ $listaAux = new SplDoublyLinkedList();
 
 			
            $aux=Session::get('matriz');
-		
+		 for ($i=1; $i <sizeof($listaAux) ; $i++) { 
+			for ($j=0; $j <(sizeof($listaAux)-1) ; $j++) { 
+				if ($aux[$j]['Edad']>$aux[$j+1]['Edad']) {
+					
+
+					$aux2=$aux[$j];
+					$aux[$j]=$aux[$j+1];
+					$aux[$j+1]=$aux2;
+
+					
+				}
+			}
+		}
 		for ($i=1; $i <sizeof($listaAux) ; $i++) { 
 			for ($j=0; $j <(sizeof($listaAux)-1) ; $j++) { 
 				if ($aux[$j]['Prioridad']>$aux[$j+1]['Prioridad']) {
 					
+
 					$aux2=$aux[$j];
 					$aux[$j]=$aux[$j+1];
 					$aux[$j+1]=$aux2;
+
+
+
+
 				}
 			}
 		}
-       
+      
           Session::put('matriz',$aux);
 			
 		}  else{
@@ -92,34 +109,84 @@ $listaAux = new SplDoublyLinkedList();
 
   // Session::forget('matriz');
 
-		
-  		//dd($request->session()->get('matriz'));
-		//$datos=[
-		//	'personas'=>$request->session()->get('matriz')
-		//];
-
-/*
-
-       for ($listaAux->rewind();$listaAux->valid();$listaAux->next()) { 
-       	# code...
-
-       	 echo "string";
-
-       }
-*/
-
-
-     
-		
-   
     	return view('registro');
 
 
     }   
      
 
+public function Cajero1 (Request $request){
+
+ $atencionCliente=Session::get('matriz');
+
+ $atencionCliente[0];
 
 
+        if(Session::has('sesioncajero1')){
+
+
+			$dato = Session::get('sesioncajero1');
+			$dato[] =	$atencionCliente[0];
+		
+			Session::put('sesioncajero1', $dato); 
+
+		}  else{
+
+			
+			$sesioncajero1=$atencionCliente[0];
+			Session::put('sesioncajero1',$sesioncajero1);
+			
+
+
+		}
+
+		$contador=0;
+ if(Session::has('sesioncajero1')){
+            foreach (Session::get('matriz') as $array){
+            	
+            	$contador++;
+                foreach ($array as $word => $meaning){
+
+                	if ($contador==1) {
+                		echo "<tr>";
+	                
+	                 echo "<strong><th>",$word,"</th></strong>"; 
+	                  echo "<th>",$meaning,"</th>";
+	            
+	                 echo "</tr>"; 
+                	}
+                
+                }
+            }
+   }
+
+
+  return view('reporte2');
+
+}
+
+
+public function Cajero2 (Request $request){
+
+
+
+
+
+
+
+
+}
+
+public function Cajero3 (Request $request){
+
+
+
+
+
+
+
+
+}
 
 
 
