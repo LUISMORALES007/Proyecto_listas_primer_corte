@@ -19,7 +19,8 @@ class Turnos extends Controller{
             $prioridad=$request->input('Prioridad');       
                       
 
-
+$listaAux = new SplDoublyLinkedList();
+               $auxMatriz = Session::get('matriz');
             //dd(Session::has('matriz'));
 		if(Session::has('matriz')){
 
@@ -38,7 +39,6 @@ class Turnos extends Controller{
 			);
 			Session::put('matriz', $dato); 
 
-			echo "Se ha agregado un nuevo usuario a la lista de espera...";
 
 			
 
@@ -53,12 +53,23 @@ class Turnos extends Controller{
                         
                    }
 
-           var_dump($listaAux);
+           
 
 			
-     
+           $aux=Session::get('matriz');
+		
+		for ($i=1; $i <sizeof($listaAux) ; $i++) { 
+			for ($j=0; $j <(sizeof($listaAux)-1) ; $j++) { 
+				if ($aux[$j]['Prioridad']>$aux[$j+1]['Prioridad']) {
+					
+					$aux2=$aux[$j]['Prioridad'];
+					$aux[$j]['Prioridad']=$aux[$j+1]['Prioridad'];
+					$aux[$j+1]['Prioridad']=$aux2;
+				}
+			}
+		}
        
-          
+          Session::put('matriz',$aux);
 			
 		}  else{
 
@@ -76,12 +87,9 @@ class Turnos extends Controller{
 			);
 			Session::put('matriz',$matriz);
 
-			echo "Se creo la variable de session";
-
 		}
 
 
-          
   // Session::forget('matriz');
 
 		

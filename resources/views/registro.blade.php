@@ -181,11 +181,11 @@
     
    <strong>Prioridad:</strong>  <select  class="custom-select" name="Prioridad" >
   <option selected >Seleccione uno</option>
-  <option >Mujer embarazada</option>
-  <option >Persona tercera edad</option>
-  <option >Persona con discapacidad</option>
-  <option >Mujer</option>
-  <option >Hombre</option>
+  <option >1</option>
+  <option >2</option>
+  <option >3</option>
+  <option >4</option>
+  <option >5</option>
 
 
   <br>
